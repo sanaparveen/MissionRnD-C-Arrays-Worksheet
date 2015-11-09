@@ -15,7 +15,7 @@ NOTES: Don't create new array, try to change the input array.
 #include<stdlib.h>
 
 /*hashing*/
-/*struct hash *hashTable = NULL;
+struct hash *hashTable = NULL;
 int elementCount = 0;
 
 struct node {
@@ -92,29 +92,26 @@ void display(int Arr[],int* tlen)
 	}
 	*tlen = j;
 }
-*/
+
 void * removeArrayDuplicates(int *Arr, int len)
 {
 	
-/*	int i = 0,tlen=0;
-	elementCount = len;
-	hashTable = (struct hash *)calloc(elementCount, sizeof (struct hash));*/
-	
-	//if (len < 1)
+	int i = 0, tlen = 0;
+
+	if (len < 1 || Arr == NULL)
 		return NULL;
-	/*
+	elementCount = len + 1;
+	hashTable = (struct hash *)calloc(elementCount, sizeof (struct hash));
+
 	
-		for (i = 0; i < len; i++)
-		if (searchElement(Arr[i]) == -1 || Arr[i] != searchElement(Arr[i]))
-		{
-			insertintoHash(Arr[i], Arr[i]);
-		}
-	    display(Arr,&tlen);
-		len = Arr[0];
-		for (i = 1; i < tlen; i++)
-			Arr[i - 1] = Arr[i];
-		Arr[tlen] = len;
-		return Arr;
+	Arr[len] = Arr[len - 1];
+	for (i = 0; i < len + 1; i++)
+	if (searchElement(Arr[i]) == -1 || Arr[i] != searchElement(Arr[i]))
+	{
+		insertintoHash(Arr[i], Arr[i]);
+	}
+
+	display(Arr, &tlen);
 	
-	*/
+	
 }
