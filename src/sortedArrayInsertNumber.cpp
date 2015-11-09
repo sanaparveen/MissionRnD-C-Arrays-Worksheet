@@ -21,7 +21,7 @@ int * sortedArrayInsertNumber(int *Arr, int len, int num)
 
 	if (len<1||Arr == NULL)
 		return NULL;
-	realloc(Arr, len*sizeof(int));
+	realloc(Arr, len*sizeof(int)); 
 
 	pos = binarySearch(Arr, len, num);
 

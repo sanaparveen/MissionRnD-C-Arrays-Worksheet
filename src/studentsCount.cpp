@@ -39,7 +39,7 @@ int search(int *Arr, int low, int high, int score, int val)
 	}
 
 	return (val == 1 && res == -1) ? temp + 1 : (val == 2 && res == -1) ? temp : res;
-}
+} 
 void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCount) {
 	
 	int low = 0, high = len - 1;

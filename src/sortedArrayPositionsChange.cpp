@@ -25,15 +25,16 @@ void * sortedArrayPositionsChange(int *Arr, int len)
 		   low = i;
 		   break;
 	   }
-	for (i = len - 1; i>low || low == -1; i--)
+	for (i = len - 1; i>low || low == -1; i--) // low==-1 the whole array is already sorted and need not check another number
 	   if (Arr[i]<Arr[i - 1])
 	   {
 		   high = i;
 		   break;
 	   }
-	   if (low != -1){
-		   Arr[low] = Arr[low] + Arr[high];
-		   Arr[high] = Arr[low] - Arr[high];
-		   Arr[low] = Arr[low] - Arr[high];
-	   }
+	if (low != -1) // if Arr is not sorted
+	{  
+		Arr[low]  = Arr[low] + Arr[high];
+		Arr[high] = Arr[low] - Arr[high];
+		Arr[low]  = Arr[low] - Arr[high];
+	 }
 }
