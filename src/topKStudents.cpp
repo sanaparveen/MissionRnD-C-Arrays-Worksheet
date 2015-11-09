@@ -14,13 +14,57 @@ NOTES:
 */
 
 #include <iostream>
-#include <malloc.h>
+
 
 struct student {
 	char *name;
 	int score;
 };
 
+void qsort(struct student *students, int left, int right)
+{
+	struct student pivot;
+	int i, j, k = 0;
+	if (left < right)
+	{
+		pivot = students[left];
+		i = left;
+		j = right;
+		while (left < right){
+			while ((students[right].score >= pivot.score) && (left < right))
+				--right;
+			if (left != right)
+				students[left++] = students[right];
+			while ((students[left].score <= pivot.score) && (left < right))
+				++left;
+			if (left != right)
+				students[right--] = students[left];
+		}
+		students[left] = pivot;
+		k = left;
+		left = i;
+		right = j;
+		if (left<k)
+			qsort(students, left, k - 1);
+		if (right > k)
+			qsort(students, k + 1, right);
+	}
+
+} 
+#include <malloc.h>
 struct student ** topKStudents(struct student *students, int len, int K) {
-	return NULL;
+
+	int i, n = 0;
+	struct student **array = (struct student **)malloc(n* sizeof(struct student));
+	
+	if (len < 1 || K <= 0)
+		return NULL;
+
+	qsort(students, 0, len - 1);
+	if (K>len)
+		K = len;
+	for (i = len - K; i<len ; i++)
+		array[n++] = &students[i];
+
+	return array;
 }

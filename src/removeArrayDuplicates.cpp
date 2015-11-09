@@ -28,7 +28,7 @@ struct hash {
 	struct node *head;
 	int count;
 };
-
+#include<malloc.h>
 struct node * listNode(int key, int array) {
 	struct node *newnode;
 	newnode = (struct node *)malloc(sizeof(struct node));
@@ -92,7 +92,7 @@ void display(int Arr[],int* tlen)
 	}
 	*tlen = j;
 }
-
+#include<malloc.h>
 void * removeArrayDuplicates(int *Arr, int len)
 {
 	

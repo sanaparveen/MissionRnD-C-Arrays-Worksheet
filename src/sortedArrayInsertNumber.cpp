@@ -12,9 +12,8 @@ NOTES: Use realloc to allocate memory.
 */
 
 #include <stdio.h>
-#include <malloc.h>
-
 int binarySearch(int *Arr, int len, int num);
+#include <malloc.h>
 int * sortedArrayInsertNumber(int *Arr, int len, int num)
 {
 	int pos, i;
