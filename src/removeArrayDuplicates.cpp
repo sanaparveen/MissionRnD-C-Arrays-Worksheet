@@ -17,7 +17,6 @@ NOTES: Don't create new array, try to change the input array.
 /*hashing*/
 struct hash *hashTable = NULL;
 int elementCount = 0;
-
 struct node {
 	int key;
 	int array;
@@ -28,7 +27,6 @@ struct hash {
 	struct node *head;
 	int count;
 };
-#include<malloc.h>
 struct node * listNode(int key, int array) {
 	struct node *newnode;
 	newnode = (struct node *)malloc(sizeof(struct node));
@@ -72,12 +70,11 @@ int searchElement(int key) {     //to check whethe the the key value pair exist 
 		return -1;
 
 }
-
-void display(int Arr[],int* tlen)
+void display(int Arr[])
 {
 
 	struct node *myNode;
-	int i,j=0;
+	int i, j = 0;
 	for (i = 0; i < elementCount; i++) {
 		if (hashTable[i].count == 0)
 			continue;
@@ -90,28 +87,30 @@ void display(int Arr[],int* tlen)
 			myNode = myNode->next;
 		}
 	}
-	*tlen = j;
 }
-#include<malloc.h>
+
 void * removeArrayDuplicates(int *Arr, int len)
 {
-	
-	int i = 0, tlen = 0;
+	int i = 0;
+	int temp[20];
 
-	if (len < 1 || Arr == NULL)
+	if (len<1 || Arr == NULL)
 		return NULL;
+
 	elementCount = len + 1;
 	hashTable = (struct hash *)calloc(elementCount, sizeof (struct hash));
 
-	
-	Arr[len] = Arr[len - 1];
-	for (i = 0; i < len + 1; i++)
-	if (searchElement(Arr[i]) == -1 || Arr[i] != searchElement(Arr[i]))
+	for (i = 0; i < len; i++)
+		temp[i] = Arr[i];
+	temp[len] = Arr[len - 1];
+    len++;
+
+	for (i = 0; i < len; i++)
+	if (temp[i] != searchElement(temp[i]))
 	{
-		insertintoHash(Arr[i], Arr[i]);
+		insertintoHash(temp[i], temp[i]);
 	}
 
-	display(Arr, &tlen);
-	
-	
+	display(Arr);
+
 }

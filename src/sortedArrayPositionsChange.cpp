@@ -37,4 +37,5 @@ void * sortedArrayPositionsChange(int *Arr, int len)
 		Arr[high] = Arr[low] - Arr[high];
 		Arr[low]  = Arr[low] - Arr[high];
 	 }
+	return NULL;
 }

@@ -21,24 +21,42 @@ struct student {
 };
 
 
-
+void quicksort(struct student*st, int first, int last);
 void * scoresDescendingSort(struct student *students, int len) {
 
-	struct student temp;
-	int i, j;
 	if (len<1 || students==NULL)
 		return NULL;
 
-	for (i = 0; i<len; i++)
-	{
-		for (j = i + 1; j<len; j++)
-			if (students[i].score<students[j].score)
-			{
-				temp = students[j];
-				students[j] = students[i];
-				students[i] = temp;
+	quicksort(students, 0, len - 1);
+}
+void quicksort(struct student*st, int first, int last) {
+	int pivot, j, i;
+	struct student temp;
+
+	if (first<last){
+		pivot = first;
+		i = first;
+		j = last;
+
+		while (i<j){
+			while (st[i].score >= st[pivot].score && i < last)
+				i++;
+			while (st[j].score<st[pivot].score)
+				j--;
+			if (i<j){
+				temp = st[i];
+				st[i] = st[j];
+				st[j] = temp;
 			}
+		}
+
+		temp = st[pivot];
+		st[pivot] = st[j];
+		st[j] = temp;
+
+		quicksort(st, first, j - 1);
+		quicksort(st, j + 1, last);
+
 	}
 }
-
 	

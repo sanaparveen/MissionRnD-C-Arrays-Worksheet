@@ -49,4 +49,5 @@ void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCoun
 	*moreCount = 0;
 	*lessCount = search(Arr, low, high, score, 1);
 	*moreCount = (len - 1) - search(Arr, low, high, score, 2);
+	return NULL;
 }

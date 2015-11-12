@@ -54,8 +54,8 @@ void qsort(struct student *students, int left, int right)
 #include <malloc.h>
 struct student ** topKStudents(struct student *students, int len, int K) {
 
-	int i, n = 0;
-	struct student **array = (struct student **)malloc(n* sizeof(struct student));
+	int i=0,n=0;
+	struct student **array = (struct student **)malloc(sizeof(struct student));
 	
 	if (len < 1 || K <= 0)
 		return NULL;
