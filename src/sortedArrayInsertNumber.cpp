@@ -19,16 +19,13 @@ int * sortedArrayInsertNumber(int *Arr, int len, int num)
 	if (len<0||Arr == NULL)
 		return NULL;
 
-	int *temp;
-	temp = (int *)realloc(Arr, (len + 1)*sizeof(int));
-	while (num < temp[index] && index >= 0)
+	while (num < Arr[index] && index >= 0)
 	{
-		temp[index+1] = temp[index];
+		Arr[index+1] = Arr[index];
 		index--;
 	}
-	temp[index + 1] = num;
-	len++;
-	Arr = temp;
+	realloc(Arr, (len + 1)*sizeof(int));
+	Arr[index + 1] = num;
 
 	return Arr;
 
