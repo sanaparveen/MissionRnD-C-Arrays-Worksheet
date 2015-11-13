@@ -70,7 +70,7 @@ int searchElement(int key) {     //to check whethe the the key value pair exist 
 		return -1;
 
 }
-void display(int Arr[])
+void insertFromHash(int Arr[])
 {
 
 	struct node *myNode;
@@ -92,25 +92,18 @@ void display(int Arr[])
 void * removeArrayDuplicates(int *Arr, int len)
 {
 	int i = 0;
-	int temp[20];
 
-	if (len<1 || Arr == NULL)
+	if (len<0 || Arr == NULL)
 		return NULL;
 
 	elementCount = len + 1;
 	hashTable = (struct hash *)calloc(elementCount, sizeof (struct hash));
 
 	for (i = 0; i < len; i++)
-		temp[i] = Arr[i];
-	temp[len] = Arr[len - 1];
-    len++;
-
-	for (i = 0; i < len; i++)
-	if (temp[i] != searchElement(temp[i]))
+	if (Arr[i] != searchElement(Arr[i]))
 	{
-		insertintoHash(temp[i], temp[i]);
+		insertintoHash(Arr[i], Arr[i]);
 	}
-
-	display(Arr);
+	insertFromHash(Arr);
 
 }
